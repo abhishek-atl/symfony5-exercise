@@ -2,26 +2,19 @@
 
 namespace App\Controller;
 
-use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
-class HomeController
+class HomeController extends AbstractController
 {
     /**
      * @Route("/")
      */
     public function index()
     {
-        return new Response('This is a response to a request');
-    }
-
-    /**
-     * @Route("{slug}")
-     */
-    public function show($slug)
-    {
-        return new Response(
-            sprintf('This is a second page titled "%s"', ucfirst(str_replace('-', ' ', $slug)))
-        );
+        return $this->render('question/show.html.twig', [
+            'question' => 'How many continents are there in the world?',
+            'answers' => [4, 5, 8, 7]
+        ]);
     }
 }
