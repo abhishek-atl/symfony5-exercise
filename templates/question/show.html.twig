@@ -2,17 +2,32 @@
 
 {% block body %}
 
-{# This is a comment #}
+<div class="container">
+    <div class="row">
 
-<h2>{{ question }}</h2>
+        <div class="col-12">
+            <ul>
+                {% for question in questions %}
+                <li><a href="{{ path('app_questions',{slug: question|lower|replace({' ':'-'} ) }) }}">{{ question }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
 
-<h2>Answers ({{ answers|length }})</h2>
+    </div>
+</div>
 
-<ul>
-    {% for answer in answers %}
-    <li>{{ answer }}</li>
-    {% endfor %}
-</ul>
+{% endblock %}
 
-<a href="{{ path('app_homepage')}}">Go Home</a>
+{% block javascripts %}
+
+{{ parent() }}
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        console.log("Document loaded");
+    })
+
+</script>
+
 {% endblock %}

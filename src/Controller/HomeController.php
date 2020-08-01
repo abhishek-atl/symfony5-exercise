@@ -12,9 +12,23 @@ class HomeController extends AbstractController
      */
     public function index()
     {
+        $questions = [
+            'How many continents are there in the world?',
+            'How many oceans are there in the world?'
+        ];
+
         return $this->render('question/show.html.twig', [
-            'question' => 'How many continents are there in the world?',
-            'answers' => [4, 5, 8, 7]
+            'questions' => $questions
+        ]);
+    }
+
+    /**
+     * @Route("question/{slug}",name="app_questions")
+     */
+    public function show($slug)
+    {
+        return $this->render('question/answers.html.twig', [
+            'slug' => $slug
         ]);
     }
 }
