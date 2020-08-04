@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use Knp\Bundle\MarkdownBundle\MarkdownParserInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -10,10 +11,11 @@ class HomeController extends AbstractController
     /**
      * @Route("/",name="app_homepage")
      */
-    public function index()
+    public function index(MarkdownParserInterface $markDownParser)
     {
+        $question = $markDownParser->transformMarkdown('How many continents are there in the **world**?');
         $questions = [
-            'How many continents are there in the world?',
+            $question,
             'How many oceans are there in the world?'
         ];
 

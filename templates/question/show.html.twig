@@ -8,7 +8,7 @@
         <div class="col-12">
             <ul>
                 {% for question in questions %}
-                <li><a href="{{ path('app_questions',{slug: question|lower|replace({' ':'-'} ) }) }}">{{ question }}</a>
+                <li><a href="{{ path('app_questions',{slug: 'example' }) }}">{{ question|raw }}</a>
                 </li>
                 {% endfor %}
             </ul>
